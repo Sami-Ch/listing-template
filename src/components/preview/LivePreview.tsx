@@ -38,14 +38,15 @@ export default function LivePreview() {
     }
   }, [activeTemplate, reloadIframe]);
 
-  // Handle section count changes (Add/Remove)
-  const prevSectionCount = useRef(activeTemplate?.sections.length || 0);
+  // Handle section count OR order changes
+  const prevSectionsRef = useRef(activeTemplate?.sections.map(s => s.id).join(','));
   useEffect(() => {
-    if (activeTemplate && activeTemplate.sections.length !== prevSectionCount.current) {
+    const currentSections = activeTemplate?.sections.map(s => s.id).join(',');
+    if (activeTemplate && currentSections !== prevSectionsRef.current) {
       reloadIframe();
-      prevSectionCount.current = activeTemplate.sections.length;
+      prevSectionsRef.current = currentSections;
     }
-  }, [activeTemplate?.sections.length, reloadIframe, activeTemplate]);
+  }, [activeTemplate, reloadIframe]);
 
   // Surgical DOM updates when element data changes (no flash)
   useEffect(() => {
@@ -84,8 +85,7 @@ export default function LivePreview() {
               finalHref &&
               !finalHref.startsWith("http") &&
               !finalHref.startsWith("mailto") &&
-              !finalHref.startsWith("#") &&
-              finalHref.includes(".")
+              !finalHref.startsWith("#")
             ) {
               finalHref = `https://${finalHref}`;
             }
@@ -95,65 +95,17 @@ export default function LivePreview() {
 
         if (element.styles) {
           const htmlEl = elNode as HTMLElement;
-          if (element.styles.paddingTop)
-            htmlEl.style.paddingTop = element.styles.paddingTop;
-          if (element.styles.paddingRight)
-            htmlEl.style.paddingRight = element.styles.paddingRight;
-          if (element.styles.paddingBottom)
-            htmlEl.style.paddingBottom = element.styles.paddingBottom;
-          if (element.styles.paddingLeft)
-            htmlEl.style.paddingLeft = element.styles.paddingLeft;
-          if (element.styles.width) htmlEl.style.width = element.styles.width;
-          if (element.styles.fontSize)
-            htmlEl.style.fontSize = element.styles.fontSize;
-          if (element.styles.color) htmlEl.style.color = element.styles.color;
+          Object.entries(element.styles).forEach(([prop, val]) => {
+            if (val) {
+              (htmlEl.style as any)[prop] = !isNaN(Number(val)) ? `${val}px` : val;
+            } else {
+              (htmlEl.style as any)[prop] = "";
+            }
+          });
         }
       });
     });
   }, [activeTemplate]);
-
-  // Auto-resize iframe to content height (eliminates double scrollbar)
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-
-    const handleLoad = () => {
-      const doc = iframe.contentDocument;
-      if (doc?.body) {
-        // Inject styles to prevent inner scrolling and fix fonts
-        const style = doc.createElement("style");
-        style.textContent = `
-          html, body { 
-            height: auto !important; 
-            overflow: visible !important; 
-            margin: 0 !important; 
-            padding: 0 !important;
-          }
-          * { scrollbar-width: none !important; }
-          ::-webkit-scrollbar { display: none !important; }
-        `;
-        doc.head.appendChild(style);
-      }
-
-      const tryResize = () => {
-        const d = iframe.contentDocument;
-        if (d?.body) {
-          const h = d.documentElement.scrollHeight || d.body.scrollHeight;
-          if (h > 0 && Math.abs(h - iframeHeight) > 10) {
-            setIframeHeight(h + 60);
-          }
-        }
-      };
-
-      tryResize();
-      // More aggressive polling for height changes (images, transitions)
-      const intervals = [100, 500, 1000, 2000, 5000];
-      intervals.forEach(ms => setTimeout(tryResize, ms));
-    };
-
-    iframe.addEventListener("load", handleLoad);
-    return () => iframe.removeEventListener("load", handleLoad);
-  }, [iframeHeight]);
 
   // Handle download export
   const handleDownload = useCallback(() => {
@@ -216,21 +168,20 @@ export default function LivePreview() {
       {/* Canvas */}
       <div className="flex-1 overflow-auto bg-zinc-900 flex justify-center p-8 custom-scrollbar">
         <div
-          className="bg-white transition-all duration-300 shadow-2xl overflow-hidden mx-auto"
+          className="bg-white transition-all duration-300 shadow-2xl overflow-hidden mx-auto flex flex-col"
           style={{
             width: FRAME_WIDTHS[device],
             maxWidth: "100%",
             borderRadius: device !== "desktop" ? "16px" : "0",
             border: device !== "desktop" ? "8px solid #222" : "none",
+            height: device !== "desktop" ? "800px" : "100%",
           }}
         >
           <iframe
             ref={iframeRef}
-            className="w-full border-none block"
-            style={{ height: `${iframeHeight}px` }}
+            className="w-full h-full border-none block flex-1"
             title="template-preview"
             sandbox="allow-same-origin"
-            scrolling="no"
           />
         </div>
       </div>

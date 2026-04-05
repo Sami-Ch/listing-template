@@ -1,5 +1,6 @@
 import type { TemplateSchema } from "@/types/template";
 import { rawTemplates } from "./templatesRaw";
+import { sampleTemplates } from "./seedData";
 
 /**
  * Generates final eBay-ready HTML from a template schema.
@@ -37,19 +38,38 @@ export function generateFullHtml(template: TemplateSchema, forExport: boolean = 
     `;
     doc.head.appendChild(styleTag);
 
-    // 1. Inject user edits into DOM nodes
+    // 1. Build blueprints of pure initial HTML elements by their section type
+    const originalTemplate = sampleTemplates.find(t => t.id === template.id);
+    const originalSectionsMap = new Map<string, string>();
+    originalTemplate?.sections.forEach(s => originalSectionsMap.set(s.id, s.type));
+
+    const blueprintsByType = new Map<string, HTMLElement>();
+    sectionParent.querySelectorAll("[data-customizer-section]").forEach(node => {
+      const id = node.getAttribute("data-customizer-section");
+      if (id) {
+        const type = originalSectionsMap.get(id);
+        if (type && !blueprintsByType.has(type)) {
+          blueprintsByType.set(type, node.cloneNode(true) as HTMLElement);
+        }
+      }
+    });
+
+    // 2. Clear parent container and rebuild entirely based on user's active sections state
+    sectionParent.innerHTML = '';
+
     for (const section of template.sections) {
-      const sectionNode = sectionParent.querySelector(
-        `[data-customizer-section="${section.id}"]`,
-      ) as HTMLElement | null;
-      if (!sectionNode) continue;
+      const blueprint = blueprintsByType.get(section.type);
+      if (!blueprint) continue;
+
+      const node = blueprint.cloneNode(true) as HTMLElement;
+      node.setAttribute("data-customizer-section", section.id);
 
       if (section.styles) {
-        Object.assign(sectionNode.style, section.styles);
+        Object.assign(node.style, section.styles);
       }
 
       for (const element of Object.values(section.elements)) {
-        const elNode = sectionNode.querySelector(
+        const elNode = node.querySelector(
           `[data-customizer-element="${element.id}"]`,
         ) as HTMLElement | null;
         if (!elNode) continue;
@@ -61,38 +81,30 @@ export function generateFullHtml(template: TemplateSchema, forExport: boolean = 
           elNode.textContent = element.value;
         } else if (element.type === "link") {
           elNode.textContent = element.value;
-          if (element.href) {
-            let absoluteHref = element.href;
+          if (element.href !== undefined) {
+            let absoluteHref = element.href || "#";
             if (
-              absoluteHref &&
+              absoluteHref !== "#" &&
               !absoluteHref.startsWith("http") &&
               !absoluteHref.startsWith("mailto") &&
-              !absoluteHref.startsWith("#") &&
-              absoluteHref.includes(".")
+              !absoluteHref.startsWith("#")
             ) {
               absoluteHref = `https://${absoluteHref}`;
             }
-            (elNode as HTMLAnchorElement).href = absoluteHref;
+            elNode.setAttribute("href", absoluteHref);
           }
         }
 
         if (element.styles) {
-          Object.assign(elNode.style, element.styles);
+          Object.entries(element.styles).forEach(([prop, val]) => {
+            if (val) {
+              (elNode.style as any)[prop] = !isNaN(Number(val)) ? `${val}px` : val;
+            }
+          });
         }
       }
-    }
 
-    // 2. Reorder sections
-    const reorderedNodes = template.sections
-      .map((s) =>
-        sectionParent.querySelector(
-          `[data-customizer-section="${s.id}"]`,
-        ),
-      )
-      .filter(Boolean);
-
-    for (const node of reorderedNodes) {
-      sectionParent.appendChild(node!);
+      sectionParent.appendChild(node);
     }
 
     // 3. Strip data attributes for clean eBay export
