@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floral Essence - Romantic Perfume Listing</title>
+    <!-- System Fonts for eBay Compliance -->
+    <style>
+        :root {
+            /* BRAND COLORS - EASY TO EDIT */
+            --primary-bg: #fffbfb;
+            --secondary-bg: #fff5f5;
+            --accent-pink: #f4dada;
+            --accent-text: #b86b6b;
+            --text-main: #4a4a4a;
+            --text-dim: #7a7a7a;
+            --border-color: #f7e1e1;
+            --font-script: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            --font-serif: 'Georgia', 'Times New Roman', serif;
+            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fcf8f8;
+            color: var(--text-main);
+            font-family: var(--font-serif);
+            line-height: 1.6;
+        }
+
+        .listing-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: var(--primary-bg);
+            border: 8px solid white;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.03);
+        }
+
+        /* HEADER */
+        .header {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--secondary-bg), var(--primary-bg));
+        }
+
+        .logo {
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-family: var(--font-script);
+            font-size: 28px;
+            color: var(--accent-text);
+            margin-bottom: 30px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            list-style: none;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav li a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav li a:hover {
+            color: var(--accent-text);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 40px;
+            background-color: white;
+            align-items: center;
+        }
+
+        .image-side {
+            padding: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 100px 100px 0 0;
+            padding: 10px;
+        }
+
+        .content-side {
+            padding: 0 40px;
+        }
+
+        .brand-name {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-text);
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .badges-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .badge-pill {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 5px 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-text);
+            border-radius: 20px;
+        }
+
+        /* DATA GRID */
+        .data-grid {
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+        }
+
+        .data-row {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .data-label {
+            width: 130px;
+            color: var(--text-dim);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .data-value {
+            font-weight: 700;
+        }
+
+        /* DESCRIPTION SECTION */
+        .description-banner {
+            background-color: var(--secondary-bg);
+            padding: 80px 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-heart {
+            color: var(--accent-text);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .floral-title {
+            font-family: var(--font-script);
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--accent-text);
+        }
+
+        .banner-text {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
+        /* INFO BLOCKS */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .info-box {
+            padding: 40px;
+            border-right: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .info-box:last-child {
+            border-right: none;
+        }
+
+        .info-box h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: var(--accent-text);
+        }
+
+        .info-box p {
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-dim);
+            background: linear-gradient(to top, var(--secondary-bg), var(--primary-bg));
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .content-side {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="listing-container">
+        <!-- HEADER -->
+        <header class="header">
+            <img src="assets/aura-nest-beatuy-logo.jpeg" alt="Aura Nest Beauty" class="logo">
+            <div class="tagline">Elegance in every drop...</div>
+            <nav>
+                <ul class="nav">
+                    <li><a href="#">Fragrances</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- PRODUCT DETAIL -->
+        <div class="hero">
+            <div class="image-side">
+                <img src="assets/floral_bottle.png" alt="Fleur D'Amour" class="main-image">
+            </div>
+            <div class="content-side">
+                <div class="brand-name">Burberry England</div>
+                <h1 class="product-name">Brit for Her <br>Oriental Floral</h1>
+
+                <div class="badges-row">
+                    <span class="badge-pill">Premium Tester</span>
+                    <span class="badge-pill">Free Delivery</span>
+                </div>
+
+                <div class="data-grid">
+                    <div class="data-row">
+                        <span class="data-label">Notes</span>
+                        <span class="data-value">Lime, Pear, Almond, Peony</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Size</span>
+                        <span class="data-value">100 ml / 3.4 oz</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Form</span>
+                        <span class="data-value">Natural Spray</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Status</span>
+                        <span class="data-value">New / Boxed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STORY SECTION -->
+        <section class="description-banner">
+            <div class="section-heart">❦</div>
+            <h2 class="floral-title">A Romantic Journey</h2>
+            <p class="banner-text">
+                Step into a world of blooming elegance. Burberry Brit for Her captures the essence of a sun-drenched
+                garden, where the sweetness of pear meets the delicate crush of white peonies and warm vanilla. A scent
+                designed for the woman who is effortlessly chic and always charming.
+            </p>
+        </section>
+
+        <!-- TRUST BLOCKS -->
+        <div class="info-grid">
+            <div class="info-box">
+                <h4>Tester Detail</h4>
+                <p>Our testers are 100% genuine and never used. They offer the same luxury experience as full retail
+                    packaging but at a price that lets you indulge in more of what you love.</p>
+            </div>
+            <div class="info-box">
+                <h4>Bespoke Care</h4>
+                <p>Every bottle is hand-inspected and wrapped with the utmost care to ensure it arrives at your doorstep
+                    in pristine condition, ready for its first spray.</p>
+            </div>
+            <div class="info-box">
+                <h4>Our Promise</h4>
+                <p>Return any product within 30 days if it's not the perfect fit for your collection. We believe in
+                    beauty without compromise.</p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2026 Aura Nest Beauty - Pure Elegance, Timeless Scent</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

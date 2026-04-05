@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Sport - High Performance Perfume Listing</title>
+    <!-- System Fonts for eBay Compliance -->
+    <style>
+        :root {
+            /* LUXE SPORT COLOR SYSTEM */
+            --carbon-base: #0f0f0f;
+            --carbon-light: #1a1a1a;
+            --deep-blue: #0056b3;
+            --electric-blue: #00a2ff;
+            --brushed-silver: #c0c0c0;
+            --text-pure: #ffffff;
+            --text-muted: #999999;
+            --font-head: 'Impact', 'Arial Black', sans-serif;
+            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --border-glint: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--carbon-base);
+            color: var(--text-pure);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .listing-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, var(--carbon-light) 0%, var(--carbon-base) 100%);
+            border: 1px solid var(--border-glint);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* HEADER & LOGO BADGE */
+        .header {
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glint);
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 150px;
+            height: 2px;
+            background: var(--electric-blue);
+        }
+
+        .logo-badge {
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 180px;
+        }
+
+        .logo {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav li a {
+            color: var(--text-pure);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .nav li a:hover {
+            color: var(--electric-blue);
+        }
+
+        /* TRUST BAR - CLEAN INTEGRATED */
+        .trust-strip {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border-glint);
+        }
+
+        .trust-item {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--brushed-silver);
+            border-right: 1px solid var(--border-glint);
+            transition: background 0.3s;
+        }
+
+        .trust-item:last-child {
+            border-right: none;
+        }
+
+        .trust-item:hover {
+            background: rgba(0, 162, 255, 0.1);
+            color: var(--electric-blue);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            padding: 80px 40px;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .image-viewport {
+            position: relative;
+            background: radial-gradient(circle at center, #1a2a3a 0%, #000000 80%);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--border-glint);
+            overflow: hidden;
+        }
+
+        .image-viewport::before {
+            content: 'HIGH PERFORMANCE';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--electric-blue);
+            opacity: 0.5;
+        }
+
+        .main-img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+            transition: transform 0.5s;
+        }
+
+        .image-viewport:hover .main-img {
+            transform: scale(1.05);
+        }
+
+        .info-panel {
+            padding: 20px 0;
+        }
+
+        .category-tag {
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--electric-blue);
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .product-title {
+            font-family: var(--font-head);
+            font-size: 52px;
+            line-height: 0.95;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 900;
+        }
+
+        .product-title span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--brushed-silver);
+        }
+
+        /* TECHNICAL SPECS OVERLAY */
+        .tech-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .spec-entry {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 3px solid var(--deep-blue);
+        }
+
+        .spec-entry.blue {
+            border-left-color: var(--electric-blue);
+            background: rgba(0, 162, 255, 0.05);
+        }
+
+        .spec-label {
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .spec-value {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-pure);
+        }
+
+        /* DESCRIPTION SECTION */
+        .details-section {
+            padding: 100px 60px;
+            background: var(--carbon-light);
+            text-align: center;
+            border-top: 1px solid var(--border-glint);
+        }
+
+        .section-headline {
+            font-family: var(--font-head);
+            font-size: 32px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: var(--brushed-silver);
+        }
+
+        .story-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* BOTTOM DATA GRID */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border-glint);
+        }
+
+        .data-block {
+            padding: 50px 40px;
+            border-right: 1px solid var(--border-glint);
+        }
+
+        .data-block:last-child {
+            border-right: none;
+        }
+
+        .data-block h3 {
+            font-family: var(--font-head);
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--electric-blue);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .data-block p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px;
+            text-align: center;
+            background: #000000;
+            border-top: 1px solid var(--border-glint);
+        }
+
+        .footer-text {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #444444;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .product-title {
+                font-size: 40px;
+            }
+
+            .tech-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-block {
+                border-right: none;
+                border-bottom: 1px solid var(--border-glint);
+            }
+
+            .nav {
+                display: none;
+                /* Mobile menu can be added later if needed */
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .trust-strip {
+                flex-wrap: wrap;
+            }
+
+            .trust-item {
+                flex: 0 0 50%;
+                border-bottom: 1px solid var(--border-glint);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="listing-wrapper">
+        <!-- TOP NAVIGATION -->
+        <header class="header">
+            <div class="logo-badge">
+                <img src="assets/aura-nest-beatuy-logo.jpeg" alt="Aura Nest Beauty" class="logo">
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li><a href="#">Official Store</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- TRUST STRIP -->
+        <div class="trust-strip">
+            <div class="trust-item">Verified Authentic</div>
+            <div class="trust-item">Priority Dispatch</div>
+            <div class="trust-item">30-Day Returns</div>
+            <div class="trust-item">Tracked Shipping</div>
+        </div>
+
+        <!-- HERO IMPACT -->
+        <main class="hero">
+            <div class="image-viewport">
+                <img src="assets/sport_bottle.png" alt="High Performance Fragrance" class="main-img">
+            </div>
+
+            <div class="info-panel">
+                <span class="category-tag">Velocity Edition</span>
+                <h1 class="product-title">
+                    Burberry Brit
+                    <span>For Him</span>
+                </h1>
+
+                <div class="tech-specs">
+                    <div class="spec-entry">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">Eau de Toilette</span>
+                    </div>
+                    <div class="spec-entry blue">
+                        <span class="spec-label">Capacity</span>
+                        <span class="spec-value">100ml / 3.3oz</span>
+                    </div>
+                    <div class="spec-entry blue">
+                        <span class="spec-label">Tuning</span>
+                        <span class="spec-value">Woody Spicy</span>
+                    </div>
+                    <div class="spec-entry">
+                        <span class="spec-label">Grade</span>
+                        <span class="spec-value">Mint / New Box</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- PERFORMANCE PROFILE -->
+        <section class="details-section">
+            <h2 class="section-headline">The Performance Profile</h2>
+            <p class="story-text">
+                Engineered for the modern man. Burberry Brit for Him is an effortless, sexy, and masculine scent. It
+                opens with the freshness of ginger and cardamom, hits with a heart of cedarwood and nutmeg, and finishes
+                with a deep base of tonka bean and patchouli. Sophistication meets raw energy in a bottle designed for
+                those who move fast.
+            </p>
+        </section>
+
+        <!-- TECHNICAL DATA BLOCKS -->
+        <section class="data-grid">
+            <div class="data-block">
+                <h3>Tester Data</h3>
+                <p>Our testers are original fragrances in simplified packaging. Guaranteed performance levels exactly
+                    identical to retail units, provided at the best possible value.</p>
+            </div>
+            <div class="data-block">
+                <h3>Shipping Logistics</h3>
+                <p>Orders processed within 24 hours via priority courier. Stealth-grade packaging ensures global
+                    delivery integrity. Secure tracking provided on dispatch.</p>
+            </div>
+            <div class="data-block">
+                <h3>Authenticity Hub</h3>
+                <p>100% genuine guaranteed. No clones. No imitations. We source exclusively from authorized supply
+                    chains to ensure your fragrance is the real deal.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-text">© 2026 Aura Nest Beauty • High Performance Fragrance Division</div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
