@@ -5,8 +5,12 @@ export const sampleTemplates: TemplateSchema[] = [
   {
     "id": "luxe_noir",
     "name": "Luxe Noir",
-    "colors": {},
-    "fonts": {},
+    "colors": {
+      "background": "#0a0a0a",
+      "primary": "#d4af37",
+      "foreground": "#ffffff",
+      "secondary": "#a0a0a0"
+    },
     "sections": [
       {
         "id": "section_0",
@@ -211,7 +215,8 @@ export const sampleTemplates: TemplateSchema[] = [
             "value": "Retail Boxed",
             "styles": {}
           }
-        }
+        },
+        "heroColumnOrder": "imageLeft"
       },
       {
         "id": "section_3",
@@ -228,15 +233,8 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_1": {
             "id": "text_1",
             "type": "text",
-            "label": "Description",
-            "value": "The Brit girl embodies the playful British spirit of individuality. She's outrageous but always\n                    charming and unpredictably sexy. Fresh and playful the fragrance is a classic green-oriental blend\n                    of lush fruits sweet nutty essences and soothing amber vanilla and Tonka bean.",
-            "styles": {}
-          },
-          "text_2": {
-            "id": "text_2",
-            "type": "text",
             "label": "Paragraph",
-            "value": "The Brit girl embodies the playful British spirit of individuality. She's outrageous but always\n                    charming and unpredictably sexy. Fresh and playful the fragrance is a classic green-oriental blend\n                    of lush fruits sweet nutty essences and soothing amber vanilla and Tonka bean.",
+            "value": "The Brit girl embodies the playful British spirit of individuality.\n\t\t\t\t\t\tShe's outrageous but always charming and unpredictably sexy. Fresh\n\t\t\t\t\t\tand playful the fragrance is a classic green-oriental blend of lush\n\t\t\t\t\t\tfruits sweet nutty essences and soothing amber vanilla and Tonka\n\t\t\t\t\t\tbean.",
             "styles": {}
           }
         }
@@ -257,14 +255,14 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_1",
             "type": "text",
             "label": "Paragraph",
-            "value": "Testers are the same original fragrances that you find in full size perfume bottles. Fragrance\n                    companies manufacture testers to promote their products.",
+            "value": "Testers are the same original fragrances that you find in full size\n\t\t\t\t\t\tperfume bottles. Fragrance companies manufacture testers to promote\n\t\t\t\t\t\ttheir products.",
             "styles": {}
           },
           "text_2": {
             "id": "text_2",
             "type": "text",
             "label": "Paragraph",
-            "value": "They may come in variety of packing - some come with simple white, brown box or unboxed with or\n                    without a cap. They are 100% authentic, fresh and completely full.",
+            "value": "They may come in variety of packing - some come with simple white,\n\t\t\t\t\t\tbrown box or unboxed with or without a cap. They are 100% authentic,\n\t\t\t\t\t\tfresh and completely full.",
             "styles": {}
           },
           "text_3": {
@@ -292,7 +290,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_6",
             "type": "text",
             "label": "List Item",
-            "value": "Secure packaging to ensure your bottle arrives in perfect condition.",
+            "value": "Secure packaging to ensure your bottle arrives in perfect\n\t\t\t\t\t\t\tcondition.",
             "styles": {}
           },
           "text_7": {
@@ -320,8 +318,8 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_0": {
             "id": "text_0",
             "type": "text",
-            "label": "Paragraph",
-            "value": "© 2026 Aura Nest Beauty. All Rights Reserved. | Contact Us",
+            "label": "Footer text",
+            "value": "© 2026 Aura Nest Beauty. All Rights Reserved. |",
             "styles": {}
           }
         }
@@ -331,8 +329,12 @@ export const sampleTemplates: TemplateSchema[] = [
   {
     "id": "crystal_clean",
     "name": "Crystal Clean",
-    "colors": {},
-    "fonts": {},
+    "colors": {
+      "background": "#ffffff",
+      "primary": "#333333",
+      "foreground": "#222222",
+      "secondary": "#666666"
+    },
     "sections": [
       {
         "id": "section_0",
@@ -413,60 +415,82 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_2": {
             "id": "text_2",
             "type": "text",
-            "label": "Spec Label",
-            "value": "Size",
+            "label": "Badge",
+            "value": "Authentic",
             "styles": {}
           },
           "text_3": {
             "id": "text_3",
             "type": "text",
-            "label": "Spec Value",
-            "value": "100ml / 3.3oz",
+            "label": "Badge",
+            "value": "Fast Shipping",
             "styles": {}
           },
           "text_4": {
             "id": "text_4",
             "type": "text",
-            "label": "Spec Label",
-            "value": "Type",
+            "label": "Badge",
+            "value": "Best Price",
             "styles": {}
           },
           "text_5": {
             "id": "text_5",
             "type": "text",
-            "label": "Spec Value",
-            "value": "Eau de Parfum",
+            "label": "Spec Label",
+            "value": "Size",
             "styles": {}
           },
           "text_6": {
             "id": "text_6",
             "type": "text",
-            "label": "Spec Label",
-            "value": "Condition",
+            "label": "Spec Value",
+            "value": "100ml / 3.3oz",
             "styles": {}
           },
           "text_7": {
             "id": "text_7",
             "type": "text",
-            "label": "Spec Value",
-            "value": "New in Box",
+            "label": "Spec Label",
+            "value": "Type",
             "styles": {}
           },
           "text_8": {
             "id": "text_8",
             "type": "text",
-            "label": "Spec Label",
-            "value": "Gender",
+            "label": "Spec Value",
+            "value": "Eau de Parfum",
             "styles": {}
           },
           "text_9": {
             "id": "text_9",
             "type": "text",
+            "label": "Spec Label",
+            "value": "Condition",
+            "styles": {}
+          },
+          "text_10": {
+            "id": "text_10",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "New in Box",
+            "styles": {}
+          },
+          "text_11": {
+            "id": "text_11",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Gender",
+            "styles": {}
+          },
+          "text_12": {
+            "id": "text_12",
+            "type": "text",
             "label": "Spec Value",
             "value": "Women",
             "styles": {}
           }
-        }
+        },
+        "heroColumnOrder": "imageLeft"
       },
       {
         "id": "section_2",
@@ -476,7 +500,7 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_0": {
             "id": "text_0",
             "type": "text",
-            "label": "Subheading",
+            "label": "Section Title",
             "value": "Description",
             "styles": {}
           },
@@ -484,7 +508,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_1",
             "type": "text",
             "label": "Description",
-            "value": "Experience the essence of British style. Burberry Brit for Her is a fragrance that is both traditional\n                and modern, featuring an oriental floral blend that opens with notes of lime and pear, settling into a\n                heart of almond and peony, grounded by base notes of vanilla and tonka bean.",
+            "value": "Experience the essence of British style. Burberry Brit for Her is a\n\t\t\t\t\tfragrance that is both traditional and modern, featuring an oriental\n\t\t\t\t\tfloral blend that opens with notes of lime and pear, settling into a\n\t\t\t\t\theart of almond and peony, grounded by base notes of vanilla and tonka\n\t\t\t\t\tbean.",
             "styles": {}
           }
         }
@@ -504,33 +528,47 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_1": {
             "id": "text_1",
             "type": "text",
-            "label": "Heading 3",
-            "value": "Authenticity",
+            "label": "Paragraph",
+            "value": "Testers are original fragrances but often come in simpler packaging.\n\t\t\t\t\t\tThey are exactly the same high-quality liquid, offering you the best\n\t\t\t\t\t\tvalue for your favorite scent.",
             "styles": {}
           },
           "text_2": {
             "id": "text_2",
             "type": "text",
             "label": "Heading 3",
-            "value": "Returns Policy",
+            "value": "Authenticity",
             "styles": {}
           },
           "text_3": {
             "id": "text_3",
             "type": "text",
-            "label": "List Item",
-            "value": "30-day hassle-free returns",
+            "label": "Paragraph",
+            "value": "We guarantee 100% authenticity on every item we sell. Our products\n\t\t\t\t\t\tare sourced directly from authorized distributors or the brands\n\t\t\t\t\t\tthemselves.",
             "styles": {}
           },
           "text_4": {
             "id": "text_4",
             "type": "text",
-            "label": "List Item",
-            "value": "Securely packaged shipments",
+            "label": "Heading 3",
+            "value": "Returns Policy",
             "styles": {}
           },
           "text_5": {
             "id": "text_5",
+            "type": "text",
+            "label": "List Item",
+            "value": "30-day hassle-free returns",
+            "styles": {}
+          },
+          "text_6": {
+            "id": "text_6",
+            "type": "text",
+            "label": "List Item",
+            "value": "Securely packaged shipments",
+            "styles": {}
+          },
+          "text_7": {
+            "id": "text_7",
             "type": "text",
             "label": "List Item",
             "value": "Professional customer support",
@@ -542,15 +580,27 @@ export const sampleTemplates: TemplateSchema[] = [
         "id": "section_4",
         "type": "footer",
         "label": "Footer",
-        "elements": {}
+        "elements": {
+          "text_0": {
+            "id": "text_0",
+            "type": "text",
+            "label": "Footer text",
+            "value": "© 2026 Aura Nest Beauty. All rights reserved.",
+            "styles": {}
+          }
+        }
       }
     ]
   },
   {
     "id": "floral_essence",
     "name": "Floral Essence",
-    "colors": {},
-    "fonts": {},
+    "colors": {
+      "background": "#fffbfb",
+      "primary": "#b86b6b",
+      "foreground": "#4a4a4a",
+      "secondary": "#7a7a7a"
+    },
     "sections": [
       {
         "id": "section_0",
@@ -597,6 +647,13 @@ export const sampleTemplates: TemplateSchema[] = [
             "value": "Help Center",
             "href": "#",
             "styles": {}
+          },
+          "text_0": {
+            "id": "text_0",
+            "type": "text",
+            "label": "Tagline",
+            "value": "Elegance in every drop...",
+            "styles": {}
           }
         }
       },
@@ -617,11 +674,89 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_0": {
             "id": "text_0",
             "type": "text",
+            "label": "Brand line",
+            "value": "Burberry England",
+            "styles": {}
+          },
+          "text_1": {
+            "id": "text_1",
+            "type": "text",
             "label": "Heading",
             "value": "Brit for Her Oriental Floral",
             "styles": {}
+          },
+          "text_2": {
+            "id": "text_2",
+            "type": "text",
+            "label": "Badge",
+            "value": "Premium Tester",
+            "styles": {}
+          },
+          "text_3": {
+            "id": "text_3",
+            "type": "text",
+            "label": "Badge",
+            "value": "Free Delivery",
+            "styles": {}
+          },
+          "text_4": {
+            "id": "text_4",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Notes",
+            "styles": {}
+          },
+          "text_5": {
+            "id": "text_5",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "Lime, Pear, Almond, Peony",
+            "styles": {}
+          },
+          "text_6": {
+            "id": "text_6",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Size",
+            "styles": {}
+          },
+          "text_7": {
+            "id": "text_7",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "100 ml / 3.4 oz",
+            "styles": {}
+          },
+          "text_8": {
+            "id": "text_8",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Form",
+            "styles": {}
+          },
+          "text_9": {
+            "id": "text_9",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "Natural Spray",
+            "styles": {}
+          },
+          "text_10": {
+            "id": "text_10",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Status",
+            "styles": {}
+          },
+          "text_11": {
+            "id": "text_11",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "New / Boxed",
+            "styles": {}
           }
-        }
+        },
+        "heroColumnOrder": "imageLeft"
       },
       {
         "id": "section_2",
@@ -631,15 +766,22 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_0": {
             "id": "text_0",
             "type": "text",
-            "label": "Subheading",
-            "value": "A Romantic Journey",
+            "label": "Ornament",
+            "value": "❦",
             "styles": {}
           },
           "text_1": {
             "id": "text_1",
             "type": "text",
+            "label": "Subheading",
+            "value": "A Romantic Journey",
+            "styles": {}
+          },
+          "text_2": {
+            "id": "text_2",
+            "type": "text",
             "label": "Paragraph",
-            "value": "Step into a world of blooming elegance. Burberry Brit for Her captures the essence of a sun-drenched\n                garden, where the sweetness of pear meets the delicate crush of white peonies and warm vanilla. A scent\n                designed for the woman who is effortlessly chic and always charming.",
+            "value": "Step into a world of blooming elegance. Burberry Brit for Her captures\n\t\t\t\t\tthe essence of a sun-drenched garden, where the sweetness of pear\n\t\t\t\t\tmeets the delicate crush of white peonies and warm vanilla. A scent\n\t\t\t\t\tdesigned for the woman who is effortlessly chic and always charming.",
             "styles": {}
           }
         }
@@ -660,7 +802,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_1",
             "type": "text",
             "label": "Paragraph",
-            "value": "Our testers are 100% genuine and never used. They offer the same luxury experience as full retail\n                    packaging but at a price that lets you indulge in more of what you love.",
+            "value": "Our testers are 100% genuine and never used. They offer the same\n\t\t\t\t\t\tluxury experience as full retail packaging but at a price that lets\n\t\t\t\t\t\tyou indulge in more of what you love.",
             "styles": {}
           },
           "text_2": {
@@ -674,7 +816,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_3",
             "type": "text",
             "label": "Paragraph",
-            "value": "Every bottle is hand-inspected and wrapped with the utmost care to ensure it arrives at your doorstep\n                    in pristine condition, ready for its first spray.",
+            "value": "Every bottle is hand-inspected and wrapped with the utmost care to\n\t\t\t\t\t\tensure it arrives at your doorstep in pristine condition, ready for\n\t\t\t\t\t\tits first spray.",
             "styles": {}
           },
           "text_4": {
@@ -688,7 +830,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_5",
             "type": "text",
             "label": "Paragraph",
-            "value": "Return any product within 30 days if it's not the perfect fit for your collection. We believe in\n                    beauty without compromise.",
+            "value": "Return any product within 30 days if it's not the perfect fit for\n\t\t\t\t\t\tyour collection. We believe in beauty without compromise.",
             "styles": {}
           }
         }
@@ -710,219 +852,14 @@ export const sampleTemplates: TemplateSchema[] = [
     ]
   },
   {
-    "id": "modern_sport",
-    "name": "Modern Sport",
-    "colors": {},
-    "fonts": {},
-    "sections": [
-      {
-        "id": "section_0",
-        "type": "header",
-        "label": "Header",
-        "elements": {
-          "image_0": {
-            "id": "image_0",
-            "type": "image",
-            "label": "Aura Nest Beauty",
-            "value": "",
-            "src": "/assets/aura-nest-beatuy-logo.jpeg",
-            "alt": "Aura Nest Beauty",
-            "styles": {}
-          },
-          "link_0": {
-            "id": "link_0",
-            "type": "link",
-            "label": "Official Store",
-            "value": "Official Store",
-            "href": "#",
-            "styles": {}
-          },
-          "link_1": {
-            "id": "link_1",
-            "type": "link",
-            "label": "Reviews",
-            "value": "Reviews",
-            "href": "#",
-            "styles": {}
-          },
-          "link_2": {
-            "id": "link_2",
-            "type": "link",
-            "label": "Contact",
-            "value": "Contact",
-            "href": "#",
-            "styles": {}
-          }
-        }
-      },
-      {
-        "id": "section_1",
-        "type": "section",
-        "label": "Section",
-        "elements": {}
-      },
-      {
-        "id": "section_2",
-        "type": "hero",
-        "label": "Hero",
-        "elements": {
-          "image_0": {
-            "id": "image_0",
-            "type": "image",
-            "label": "High Performance Fragrance",
-            "value": "",
-            "src": "/assets/sport_bottle.png",
-            "alt": "High Performance Fragrance",
-            "styles": {}
-          },
-          "text_0": {
-            "id": "text_0",
-            "type": "text",
-            "label": "Product Title",
-            "value": "Burberry Brit\n                    For Him",
-            "styles": {}
-          },
-          "text_1": {
-            "id": "text_1",
-            "type": "text",
-            "label": "Spec Label",
-            "value": "Engine",
-            "styles": {}
-          },
-          "text_2": {
-            "id": "text_2",
-            "type": "text",
-            "label": "Spec Value",
-            "value": "Eau de Toilette",
-            "styles": {}
-          },
-          "text_3": {
-            "id": "text_3",
-            "type": "text",
-            "label": "Spec Label",
-            "value": "Capacity",
-            "styles": {}
-          },
-          "text_4": {
-            "id": "text_4",
-            "type": "text",
-            "label": "Spec Value",
-            "value": "100ml / 3.3oz",
-            "styles": {}
-          },
-          "text_5": {
-            "id": "text_5",
-            "type": "text",
-            "label": "Spec Label",
-            "value": "Tuning",
-            "styles": {}
-          },
-          "text_6": {
-            "id": "text_6",
-            "type": "text",
-            "label": "Spec Value",
-            "value": "Woody Spicy",
-            "styles": {}
-          },
-          "text_7": {
-            "id": "text_7",
-            "type": "text",
-            "label": "Spec Label",
-            "value": "Grade",
-            "styles": {}
-          },
-          "text_8": {
-            "id": "text_8",
-            "type": "text",
-            "label": "Spec Value",
-            "value": "Mint / New Box",
-            "styles": {}
-          }
-        }
-      },
-      {
-        "id": "section_3",
-        "type": "section",
-        "label": "Section",
-        "elements": {
-          "text_0": {
-            "id": "text_0",
-            "type": "text",
-            "label": "Subheading",
-            "value": "The Performance Profile",
-            "styles": {}
-          },
-          "text_1": {
-            "id": "text_1",
-            "type": "text",
-            "label": "Paragraph",
-            "value": "Engineered for the modern man. Burberry Brit for Him is an effortless, sexy, and masculine scent. It\n                opens with the freshness of ginger and cardamom, hits with a heart of cedarwood and nutmeg, and finishes\n                with a deep base of tonka bean and patchouli. Sophistication meets raw energy in a bottle designed for\n                those who move fast.",
-            "styles": {}
-          }
-        }
-      },
-      {
-        "id": "section_4",
-        "type": "section",
-        "label": "Section",
-        "elements": {
-          "text_0": {
-            "id": "text_0",
-            "type": "text",
-            "label": "Heading 3",
-            "value": "Tester Data",
-            "styles": {}
-          },
-          "text_1": {
-            "id": "text_1",
-            "type": "text",
-            "label": "Paragraph",
-            "value": "Our testers are original fragrances in simplified packaging. Guaranteed performance levels exactly\n                    identical to retail units, provided at the best possible value.",
-            "styles": {}
-          },
-          "text_2": {
-            "id": "text_2",
-            "type": "text",
-            "label": "Heading 3",
-            "value": "Shipping Logistics",
-            "styles": {}
-          },
-          "text_3": {
-            "id": "text_3",
-            "type": "text",
-            "label": "Paragraph",
-            "value": "Orders processed within 24 hours via priority courier. Stealth-grade packaging ensures global\n                    delivery integrity. Secure tracking provided on dispatch.",
-            "styles": {}
-          },
-          "text_4": {
-            "id": "text_4",
-            "type": "text",
-            "label": "Heading 3",
-            "value": "Authenticity Hub",
-            "styles": {}
-          },
-          "text_5": {
-            "id": "text_5",
-            "type": "text",
-            "label": "Paragraph",
-            "value": "100% genuine guaranteed. No clones. No imitations. We source exclusively from authorized supply\n                    chains to ensure your fragrance is the real deal.",
-            "styles": {}
-          }
-        }
-      },
-      {
-        "id": "section_5",
-        "type": "footer",
-        "label": "Footer",
-        "elements": {}
-      }
-    ]
-  },
-  {
     "id": "vintage_boutique",
     "name": "Vintage Boutique",
-    "colors": {},
-    "fonts": {},
+    "colors": {
+      "background": "#fdfaf4",
+      "primary": "#8e735b",
+      "foreground": "#2c2520",
+      "secondary": "#5a524a"
+    },
     "sections": [
       {
         "id": "section_0",
@@ -996,11 +933,75 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_0": {
             "id": "text_0",
             "type": "text",
+            "label": "Brand line",
+            "value": "House of Burberry",
+            "styles": {}
+          },
+          "text_1": {
+            "id": "text_1",
+            "type": "text",
             "label": "Product Title",
             "value": "Brit for Her Classic Eau de Parfum",
             "styles": {}
+          },
+          "text_2": {
+            "id": "text_2",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Volume",
+            "styles": {}
+          },
+          "text_3": {
+            "id": "text_3",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "3.3 fl oz / 100 ml",
+            "styles": {}
+          },
+          "text_4": {
+            "id": "text_4",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Vessel",
+            "styles": {}
+          },
+          "text_5": {
+            "id": "text_5",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "Atomiseur / Spray",
+            "styles": {}
+          },
+          "text_6": {
+            "id": "text_6",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Provenance",
+            "styles": {}
+          },
+          "text_7": {
+            "id": "text_7",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "United Kingdom",
+            "styles": {}
+          },
+          "text_8": {
+            "id": "text_8",
+            "type": "text",
+            "label": "Spec Label",
+            "value": "Condition",
+            "styles": {}
+          },
+          "text_9": {
+            "id": "text_9",
+            "type": "text",
+            "label": "Spec Value",
+            "value": "Pristine / Collector's Box",
+            "styles": {}
           }
-        }
+        },
+        "heroColumnOrder": "imageLeft"
       },
       {
         "id": "section_2",
@@ -1010,8 +1011,15 @@ export const sampleTemplates: TemplateSchema[] = [
           "text_0": {
             "id": "text_0",
             "type": "text",
-            "label": "Paragraph",
-            "value": "\"A fragrance that speaks of timeless heritage and modern individuality. Burberry Brit for Her\n                    captures the essence of the English countryside with a delightful blend of icy pear, sugared\n                    almonds, and lush white peony. It is a scent of quiet confidence and effortless grace.\"",
+            "label": "Ornament",
+            "value": "❧",
+            "styles": {}
+          },
+          "text_1": {
+            "id": "text_1",
+            "type": "text",
+            "label": "Description",
+            "value": "\"A fragrance that speaks of timeless heritage and modern\n\t\t\t\t\t\tindividuality. Burberry Brit for Her captures the essence of the\n\t\t\t\t\t\tEnglish countryside with a delightful blend of icy pear, sugared\n\t\t\t\t\t\talmonds, and lush white peony. It is a scent of quiet confidence and\n\t\t\t\t\t\teffortless grace.\"",
             "styles": {}
           }
         }
@@ -1032,7 +1040,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_1",
             "type": "text",
             "label": "Paragraph",
-            "value": "Provenance of our testers is direct from the houses. These are original liquids housed in\n                        archival boxes, offering the same olfactory journey without the retail price premium.",
+            "value": "Provenance of our testers is direct from the houses. These are\n\t\t\t\t\t\t\toriginal liquids housed in archival boxes, offering the same\n\t\t\t\t\t\t\tolfactory journey without the retail price premium.",
             "styles": {}
           },
           "text_2": {
@@ -1046,7 +1054,7 @@ export const sampleTemplates: TemplateSchema[] = [
             "id": "text_3",
             "type": "text",
             "label": "Paragraph",
-            "value": "We ensure each vessel is secured with archival-grade protection. Should your item not arrive in\n                        pristine condition, our 30-day return window ensures your peace of mind.",
+            "value": "We ensure each vessel is secured with archival-grade protection.\n\t\t\t\t\t\t\tShould your item not arrive in pristine condition, our 30-day\n\t\t\t\t\t\t\treturn window ensures your peace of mind.",
             "styles": {}
           }
         }
@@ -1055,7 +1063,15 @@ export const sampleTemplates: TemplateSchema[] = [
         "id": "section_4",
         "type": "footer",
         "label": "Footer",
-        "elements": {}
+        "elements": {
+          "text_0": {
+            "id": "text_0",
+            "type": "text",
+            "label": "Tagline",
+            "value": "Aura Nest Beauty - Curators of Fine Scents",
+            "styles": {}
+          }
+        }
       }
     ]
   }

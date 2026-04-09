@@ -1,342 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Vintage Boutique - Artisanal Perfume Listing</title>
+		<!-- System Fonts for eBay Compliance -->
+		<style>
+		:root {
+			--c-background: #fdfaf4;
+			--c-primary: #8e735b;
+			--c-foreground: #2c2520;
+			--c-secondary: #5a524a;
+			--paper-bg: var(--c-background);
+			--ink-color: var(--c-foreground);
+			--accent-sepia: var(--c-primary);
+			--border-ink: color-mix(
+				in srgb,
+				var(--c-foreground) 55%,
+				var(--c-background)
+			);
+			--font-display: Georgia, "Times New Roman", Times, serif;
+			--font-body: Georgia, "Times New Roman", Times, serif;
+			--font-accent: Georgia, "Times New Roman", Times, serif;
+		}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vintage Boutique - Artisanal Perfume Listing</title>
-    <!-- System Fonts for eBay Compliance -->
-    <style>
-        :root {
-            /* BRAND COLORS - EASY TO EDIT */
-            --paper-bg: #fdfaf4;
-            --ink-color: #2c2520;
-            --accent-sepia: #8e735b;
-            --border-ink: #3d342d;
-            --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-            --font-body: 'Georgia', 'Times New Roman', serif;
-            --font-accent: 'Garamond', 'Baskerville', serif;
-        }
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+		body {
+			background-color: #e8e4dc;
+			color: var(--ink-color);
+			font-family: var(--font-body);
+			line-height: 1.6;
+		}
 
-        body {
-            background-color: #f2eee8;
-            color: var(--ink-color);
-            font-family: var(--font-body);
-            line-height: 1.6;
-        }
+		.listing-container {
+			max-width: 1000px;
+			margin: 40px auto;
+			background-color: var(--paper-bg);
+			border: 1px solid #dcd3c1;
+			box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+			padding: 2px;
+			/* For double border effect */
+		}
 
-        .listing-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background-color: var(--paper-bg);
-            border: 1px solid #dcd3c1;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-            padding: 2px;
-            /* For double border effect */
-        }
+		.inner-container {
+			border: 4px double var(--border-ink);
+			padding: 40px;
+			position: relative;
+		}
 
-        .inner-container {
-            border: 4px double var(--border-ink);
-            padding: 40px;
-            position: relative;
-        }
+		/* ORNAMENTAL CORNERS */
+		.inner-container::before,
+		.inner-container::after {
+			content: "❦";
+			position: absolute;
+			font-size: 24px;
+			color: var(--accent-sepia);
+		}
 
-        /* ORNAMENTAL CORNERS */
-        .inner-container::before,
-        .inner-container::after {
-            content: '❦';
-            position: absolute;
-            font-size: 24px;
-            color: var(--accent-sepia);
-        }
+		.inner-container::before {
+			top: 10px;
+			left: 10px;
+		}
 
-        .inner-container::before {
-            top: 10px;
-            left: 10px;
-        }
+		.inner-container::after {
+			bottom: 10px;
+			right: 10px;
+		}
 
-        .inner-container::after {
-            bottom: 10px;
-            right: 10px;
-        }
+		/* HEADER */
+		.header {
+			text-align: center;
+			border-bottom: 1px solid #dcd3c1;
+			padding-bottom: 40px;
+			margin-bottom: 40px;
+		}
 
-        /* HEADER */
-        .header {
-            text-align: center;
-            border-bottom: 1px solid #dcd3c1;
-            padding-bottom: 40px;
-            margin-bottom: 40px;
-        }
+		.logo {
+			max-width: 200px;
+			margin-bottom: 15px;
+			opacity: 0.9;
+		}
 
-        .logo {
-            max-width: 200px;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
+		.store-title {
+			font-family: var(--font-display);
+			font-size: 14px;
+			letter-spacing: 4px;
+			text-transform: uppercase;
+			color: var(--accent-sepia);
+		}
 
-        .store-title {
-            font-family: var(--font-display);
-            font-size: 14px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--accent-sepia);
-        }
+		.nav {
+			margin-top: 25px;
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+			list-style: none;
+			font-family: var(--font-accent);
+			text-transform: uppercase;
+			font-size: 11px;
+			letter-spacing: 2px;
+		}
 
-        .nav {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            list-style: none;
-            font-family: var(--font-accent);
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 2px;
-        }
+		.nav li a {
+			color: var(--ink-color);
+			text-decoration: none;
+			border-bottom: 1px solid transparent;
+			transition: border 0.3s;
+		}
 
-        .nav li a {
-            color: var(--ink-color);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border 0.3s;
-        }
+		.nav li a:hover {
+			border-bottom-color: var(--accent-sepia);
+		}
 
-        .nav li a:hover {
-            border-bottom-color: var(--accent-sepia);
-        }
+		/* PRODUCT HERO */
+		.product-hero {
+			display: flex;
+			gap: 50px;
+			margin-bottom: 60px;
+			align-items: center;
+		}
 
-        /* PRODUCT HERO */
-        .product-hero {
-            display: flex;
-            gap: 50px;
-            margin-bottom: 60px;
-            align-items: center;
-        }
+		.image-frame {
+			flex: 1;
+			padding: 15px;
+			background: white;
+			border: 1px solid #e0d9cb;
+			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+			transform: rotate(-1deg);
+		}
 
-        .image-frame {
-            flex: 1;
-            padding: 15px;
-            background: white;
-            border: 1px solid #e0d9cb;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
-            transform: rotate(-1deg);
-        }
+		.product-img {
+			width: 100%;
+			height: auto;
+			filter: sepia(0.2);
+		}
 
-        .product-img {
-            width: 100%;
-            height: auto;
-            filter: sepia(0.2);
-        }
+		.product-brief {
+			flex: 1.2;
+		}
 
-        .product-brief {
-            flex: 1.2;
-        }
+		.product-hero.hero--image-right {
+			flex-direction: row-reverse;
+		}
 
-        .brand-stamp {
-            font-family: var(--font-display);
-            font-size: 16px;
-            color: var(--accent-sepia);
-            margin-bottom: 10px;
-        }
+		.brand-stamp {
+			font-family: var(--font-display);
+			font-size: 16px;
+			color: var(--accent-sepia);
+			margin-bottom: 10px;
+		}
 
-        .product-title {
-            font-family: var(--font-display);
-            font-size: 38px;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            font-weight: 700;
-            border-bottom: 1px solid var(--accent-sepia);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
+		.product-title {
+			font-family: var(--font-display);
+			font-size: 38px;
+			line-height: 1.1;
+			margin-bottom: 30px;
+			font-weight: 700;
+			border-bottom: 1px solid var(--accent-sepia);
+			display: inline-block;
+			padding-bottom: 10px;
+		}
 
-        /* SPECS TABLE */
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: var(--font-accent);
-            font-size: 15px;
-        }
+		/* SPECS TABLE */
+		.specs-table {
+			width: 100%;
+			border-collapse: collapse;
+			font-family: var(--font-accent);
+			font-size: 15px;
+		}
 
-        .spec-item {
-            padding: 10px 0;
-            border-bottom: 1px dotted #dcd3c1;
-        }
+		.spec-item {
+			padding: 10px 0;
+			border-bottom: 1px dotted #dcd3c1;
+		}
 
-        .spec-name {
-            color: var(--accent-sepia);
-            font-style: italic;
-            width: 120px;
-        }
+		.spec-name {
+			color: var(--accent-sepia);
+			font-style: italic;
+			width: 120px;
+		}
 
-        .spec-content {
-            font-weight: 600;
-        }
+		.spec-content {
+			font-weight: 600;
+		}
 
-        /* DESCRIPTION */
-        .description-wrapper {
-            margin-bottom: 60px;
-            text-align: center;
-            background: #fbf8f0;
-            padding: 60px 40px;
-            border: 1px dashed #dcd3c1;
-        }
+		/* DESCRIPTION */
+		.description-wrapper {
+			margin-bottom: 60px;
+			text-align: center;
+			background: #fbf8f0;
+			padding: 60px 40px;
+			border: 1px dashed #dcd3c1;
+		}
 
-        .desc-ornament {
-            font-size: 30px;
-            color: var(--accent-sepia);
-            margin-bottom: 20px;
-        }
+		.desc-ornament {
+			font-size: 30px;
+			color: var(--accent-sepia);
+			margin-bottom: 20px;
+		}
 
-        .desc-text {
-            max-width: 750px;
-            margin: 0 auto;
-            font-size: 19px;
-            font-style: italic;
-            color: #4a4138;
-            line-height: 1.8;
-        }
+		.desc-text {
+			max-width: 750px;
+			margin: 0 auto;
+			font-size: 19px;
+			font-style: italic;
+			color: var(--c-secondary);
+			line-height: 1.8;
+		}
 
-        /* POLICIES */
-        .policies-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            border-top: 1px solid #dcd3c1;
-            padding-top: 40px;
-        }
+		/* POLICIES */
+		.policies-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+			border-top: 1px solid #dcd3c1;
+			padding-top: 40px;
+		}
 
-        .policy-item h3 {
-            font-family: var(--font-display);
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: var(--accent-sepia);
-            text-transform: uppercase;
-        }
+		.policy-item h3 {
+			font-family: var(--font-display);
+			font-size: 14px;
+			letter-spacing: 2px;
+			margin-bottom: 15px;
+			color: var(--accent-sepia);
+			text-transform: uppercase;
+		}
 
-        .policy-item p {
-            font-size: 14px;
-            color: #5a524a;
-        }
+		.policy-item p {
+			font-size: 14px;
+			color: var(--c-secondary);
+		}
 
-        /* FOOTER */
-        .footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            text-align: center;
-            border-top: 1px solid #dcd3c1;
-            font-family: var(--font-display);
-            font-size: 10px;
-            letter-spacing: 3px;
-            color: var(--accent-sepia);
-        }
+		/* FOOTER */
+		.footer {
+			margin-top: 60px;
+			padding-top: 30px;
+			text-align: center;
+			border-top: 1px solid #dcd3c1;
+			font-family: var(--font-display);
+			font-size: 10px;
+			letter-spacing: 3px;
+			color: var(--accent-sepia);
+		}
 
-        @media (max-width: 800px) {
-            .product-hero {
-                flex-direction: column;
-            }
+		@media (max-width: 800px) {
+			.product-hero {
+				flex-direction: column;
+			}
 
-            .policies-grid {
-                grid-template-columns: 1fr;
-            }
+			.policies-grid {
+				grid-template-columns: 1fr;
+			}
 
-            .inner-container {
-                padding: 20px;
-            }
+			.inner-container {
+				padding: 20px;
+			}
 
-            .product-title {
-                font-size: 30px;
-            }
-        }
-    </style>
-</head>
+			.product-title {
+				font-size: 30px;
+			}
+		}
+		</style>
+	</head>
 
-<body>
+	<body>
+		<div class="listing-container">
+			<div class="inner-container">
+				<!-- HEADER -->
+				<header class="header">
+					<img
+						src="assets/aura-nest-beatuy-logo.jpeg"
+						alt="Aura Nest Beauty"
+						class="logo"
+					>
+					<div class="store-title">Established MMXXVI</div>
+					<nav>
+						<ul class="nav">
+							<li><a href="#">The Archive</a></li>
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Testimonials</a></li>
+							<li><a href="#">Inquiry</a></li>
+						</ul>
+					</nav>
+				</header>
 
-    <div class="listing-container">
-        <div class="inner-container">
-            <!-- HEADER -->
-            <header class="header">
-                <img src="assets/aura-nest-beatuy-logo.jpeg" alt="Aura Nest Beauty" class="logo">
-                <div class="store-title">Established MMXXVI</div>
-                <nav>
-                    <ul class="nav">
-                        <li><a href="#">The Archive</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Inquiry</a></li>
-                    </ul>
-                </nav>
-            </header>
+				<!-- PRODUCT SECTION -->
+				<section class="product-hero">
+					<div class="image-frame">
+						<img
+							src="assets/vintage_bottle.png"
+							alt="Burberry Brit Classic"
+							class="product-img"
+						>
+					</div>
+					<div class="product-brief">
+						<div class="brand-stamp">House of Burberry</div>
+						<h1 class="product-title">
+							Brit for Her <br>Classic Eau de Parfum
+						</h1>
 
-            <!-- PRODUCT SECTION -->
-            <section class="product-hero">
-                <div class="image-frame">
-                    <img src="assets/vintage_bottle.png" alt="Burberry Brit Classic" class="product-img">
-                </div>
-                <div class="product-brief">
-                    <div class="brand-stamp">House of Burberry</div>
-                    <h1 class="product-title">Brit for Her <br>Classic Eau de Parfum</h1>
+						<table class="specs-table">
+							<tr>
+								<td class="spec-name">Volume</td>
+								<td class="spec-content">3.3 fl oz / 100 ml</td>
+							</tr>
+							<tr>
+								<td class="spec-name">Vessel</td>
+								<td class="spec-content">Atomiseur / Spray</td>
+							</tr>
+							<tr>
+								<td class="spec-name">Provenance</td>
+								<td class="spec-content">United Kingdom</td>
+							</tr>
+							<tr>
+								<td class="spec-name">Condition</td>
+								<td class="spec-content">Pristine / Collector's Box</td>
+							</tr>
+						</table>
+					</div>
+				</section>
 
-                    <table class="specs-table">
-                        <tr>
-                            <td class="spec-name">Volume</td>
-                            <td class="spec-content">3.3 fl oz / 100 ml</td>
-                        </tr>
-                        <tr>
-                            <td class="spec-name">Vessel</td>
-                            <td class="spec-content">Atomiseur / Spray</td>
-                        </tr>
-                        <tr>
-                            <td class="spec-name">Provenance</td>
-                            <td class="spec-content">United Kingdom</td>
-                        </tr>
-                        <tr>
-                            <td class="spec-name">Condition</td>
-                            <td class="spec-content">Pristine / Collector's Box</td>
-                        </tr>
-                    </table>
-                </div>
-            </section>
+				<!-- NARRATIVE -->
+				<section class="description-wrapper">
+					<div class="desc-ornament">❧</div>
+					<p class="desc-text">
+						"A fragrance that speaks of timeless heritage and modern
+						individuality. Burberry Brit for Her captures the essence of the
+						English countryside with a delightful blend of icy pear, sugared
+						almonds, and lush white peony. It is a scent of quiet confidence and
+						effortless grace."
+					</p>
+				</section>
 
-            <!-- NARRATIVE -->
-            <section class="description-wrapper">
-                <div class="desc-ornament">❧</div>
-                <p class="desc-text">
-                    "A fragrance that speaks of timeless heritage and modern individuality. Burberry Brit for Her
-                    captures the essence of the English countryside with a delightful blend of icy pear, sugared
-                    almonds, and lush white peony. It is a scent of quiet confidence and effortless grace."
-                </p>
-            </section>
+				<!-- TERMS -->
+				<div class="policies-grid">
+					<div class="policy-item">
+						<h3>The Tester Story</h3>
+						<p>
+							Provenance of our testers is direct from the houses. These are
+							original liquids housed in archival boxes, offering the same
+							olfactory journey without the retail price premium.
+						</p>
+					</div>
+					<div class="policy-item">
+						<h3>Safe Passage</h3>
+						<p>
+							We ensure each vessel is secured with archival-grade protection.
+							Should your item not arrive in pristine condition, our 30-day
+							return window ensures your peace of mind.
+						</p>
+					</div>
+				</div>
 
-            <!-- TERMS -->
-            <div class="policies-grid">
-                <div class="policy-item">
-                    <h3>The Tester Story</h3>
-                    <p>Provenance of our testers is direct from the houses. These are original liquids housed in
-                        archival boxes, offering the same olfactory journey without the retail price premium.</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Safe Passage</h3>
-                    <p>We ensure each vessel is secured with archival-grade protection. Should your item not arrive in
-                        pristine condition, our 30-day return window ensures your peace of mind.</p>
-                </div>
-            </div>
-
-            <!-- FOOTER -->
-            <footer class="footer">
-                Aura Nest Beauty - Curators of Fine Scents
-            </footer>
-        </div>
-    </div>
-
-</body>
-
+				<!-- FOOTER -->
+				<footer class="footer">
+					<p class="footer-tagline">
+						Aura Nest Beauty - Curators of Fine Scents
+					</p>
+				</footer>
+			</div>
+		</div>
+	</body>
 </html>

@@ -1,28 +1,32 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const templatesDir = path.join(__dirname, '../../../'); // Points to listing-templates
-const outputSeedDataPath = path.join(__dirname, '../src/lib/seedData.ts');
+const templatesDir = path.join(__dirname, "../templates");
+const outputSeedDataPath = path.join(__dirname, "../src/lib/seedData.ts");
 
 const templates = [
-  { id: 'luxe_noir', file: 'luxe_noir.html', name: 'Luxe Noir' },
-  { id: 'crystal_clean', file: 'crystal_clean.html', name: 'Crystal Clean' },
-  { id: 'floral_essence', file: 'floral_essence.html', name: 'Floral Essence' },
-  { id: 'modern_sport', file: 'modern_sport.html', name: 'Modern Sport' },
-  { id: 'vintage_boutique', file: 'vintage_boutique.html', name: 'Vintage Boutique' }
+	{ id: "luxe_noir", file: "luxe_noir.html", name: "Luxe Noir" },
+	{ id: "crystal_clean", file: "crystal_clean.html", name: "Crystal Clean" },
+	{ id: "floral_essence", file: "floral_essence.html", name: "Floral Essence" },
+	{
+		id: "vintage_boutique",
+		file: "vintage_boutique.html",
+		name: "Vintage Boutique",
+	},
 ];
 
-let rawTemplatesCode = 'export const rawTemplates: Record<string, string> = {\\n';
+let rawTemplatesCode =
+	"export const rawTemplates: Record<string, string> = {\\n";
 let seedDataCode = `import type { TemplateSchema } from '@/types/template';\\n\\nexport const sampleTemplates: TemplateSchema[] = [\\n`;
 
-templates.forEach(t => {
-  const filePath = path.join(templatesDir, t.file);
-  if (fs.existsSync(filePath)) {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    rawTemplatesCode += `  '${t.id}': \\\`${content.replace(/\\`/g, '\\\\`').replace(/\\$/g, '\\\\$')}\\\`,\\n`;
-    
-    // Generate a basic seed data object
-    seedDataCode += `
+templates.forEach((t) => {
+	const filePath = path.join(templatesDir, t.file);
+	if (fs.existsSync(filePath)) {
+		const content = fs.readFileSync(filePath, "utf-8");
+		rawTemplatesCode += `  '${t.id}': \\\`${content.replace(/\\`/g, "\\\\`").replace(/\\$/g, "\\\\$")}\\\`,\\n`;
+
+		// Generate a basic seed data object
+		seedDataCode += `
   {
     id: '${t.id}',
     name: '${t.name}',
@@ -55,12 +59,15 @@ templates.forEach(t => {
       }
     ]
   },`;
-  }
+	}
 });
 
-rawTemplatesCode += '};\\n';
+rawTemplatesCode += "};\\n";
 seedDataCode += `\\n];\\n`;
 
-fs.writeFileSync(path.join(__dirname, '../src/lib/templatesRaw.ts'), rawTemplatesCode);
+fs.writeFileSync(
+	path.join(__dirname, "../src/lib/templatesRaw.ts"),
+	rawTemplatesCode,
+);
 fs.writeFileSync(outputSeedDataPath, seedDataCode);
-console.log('Seed data generated successfully!');
+console.log("Seed data generated successfully!");

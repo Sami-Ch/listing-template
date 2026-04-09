@@ -1,364 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Luxe Noir - Premium Perfume Listing</title>
+		<!-- System Fonts for eBay Compliance -->
+		<style>
+		:root {
+			--c-background: #0a0a0a;
+			--c-primary: #d4af37;
+			--c-foreground: #ffffff;
+			--c-secondary: #a0a0a0;
+			--accent-gold: var(--c-primary);
+			--text-main: var(--c-foreground);
+			--text-dim: var(--c-secondary);
+			--border-color: color-mix(
+				in srgb,
+				var(--c-secondary) 40%,
+				var(--c-background)
+			);
+			--font-serif: Georgia, "Times New Roman", Times, serif;
+			--font-sans: Arial, Helvetica, sans-serif;
+		}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxe Noir - Premium Perfume Listing</title>
-    <!-- System Fonts for eBay Compliance -->
-    <style>
-        :root {
-            /* BRAND COLORS - EASY TO EDIT */
-            --primary-bg: #0a0a0a;
-            --secondary-bg: #111111;
-            --accent-gold: #d4af37;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --border-color: #222222;
-            --font-serif: 'Georgia', 'Times New Roman', serif;
-            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+		body {
+			background-color: #0a0a0a;
+			color: var(--text-main);
+			font-family: var(--font-sans);
+			line-height: 1.6;
+		}
 
-        body {
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-        }
+		.listing-container {
+			max-width: 1000px;
+			margin: 0 auto;
+			background-color: var(--c-background);
+			border: 1px solid var(--border-color);
+		}
 
-        .listing-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-        }
+		/* HEADER */
+		.header {
+			padding: 40px 20px;
+			text-align: center;
+			border-bottom: 1px solid var(--border-color);
+		}
 
-        /* HEADER */
-        .header {
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
+		.logo {
+			max-width: 250px;
+			margin-bottom: 20px;
+		}
 
-        .logo {
-            max-width: 250px;
-            margin-bottom: 20px;
-        }
+		.nav {
+			display: flex;
+			justify-content: center;
+			gap: 25px;
+			list-style: none;
+			text-transform: uppercase;
+			font-size: 12px;
+			letter-spacing: 2px;
+			color: var(--accent-gold);
+		}
 
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            list-style: none;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-        }
+		.nav li a {
+			color: inherit;
+			text-decoration: none;
+			transition: opacity 0.3s;
+		}
 
-        .nav li a {
-            color: inherit;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
+		.nav li a:hover {
+			opacity: 0.7;
+		}
 
-        .nav li a:hover {
-            opacity: 0.7;
-        }
+		/* BADGES */
+		.trust-badges {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			padding: 20px;
+			background-color: color-mix(in srgb, #000000 65%, var(--c-background));
+			border-bottom: 1px solid var(--border-color);
+			text-align: center;
+		}
 
-        /* BADGES */
-        .trust-badges {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            padding: 20px;
-            background-color: #050505;
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
-        }
+		.badge-item {
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: var(--text-dim);
+		}
 
-        .badge-item {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dim);
-        }
+		/* HERO SECTION */
+		.hero {
+			display: flex;
+			gap: 40px;
+			padding: 50px 40px;
+			align-items: center;
+		}
 
-        /* HERO SECTION */
-        .hero {
-            display: flex;
-            gap: 40px;
-            padding: 50px 40px;
-            align-items: center;
-        }
+		.product-image-container {
+			flex: 1;
+			text-align: center;
+		}
 
-        .product-image-container {
-            flex: 1;
-            text-align: center;
-        }
+		.product-main-image {
+			max-width: 100%;
+			height: auto;
+			border: 1px solid var(--border-color);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+		}
 
-        .product-main-image {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
+		.product-info {
+			flex: 1;
+		}
 
-        .product-info {
-            flex: 1;
-        }
+		.hero.hero--image-right {
+			flex-direction: row-reverse;
+		}
 
-        .product-brand {
-            font-family: var(--font-serif);
-            font-size: 24px;
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-            font-style: italic;
-        }
+		.product-brand {
+			font-family: var(--font-serif);
+			font-size: 24px;
+			color: var(--accent-gold);
+			margin-bottom: 10px;
+			font-style: italic;
+		}
 
-        .product-title {
-            font-family: var(--font-serif);
-            font-size: 42px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
+		.product-title {
+			font-family: var(--font-serif);
+			font-size: 42px;
+			line-height: 1.1;
+			margin-bottom: 20px;
+			color: var(--text-main);
+		}
 
-        .item-specifics {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
-        }
+		.item-specifics {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 15px;
+			margin-top: 30px;
+			padding-top: 30px;
+			border-top: 1px solid var(--border-color);
+		}
 
-        .spec-item {
-            font-size: 13px;
-        }
+		.spec-item {
+			font-size: 13px;
+		}
 
-        .spec-label {
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: 1px;
-            display: block;
-        }
+		.spec-label {
+			color: var(--text-dim);
+			text-transform: uppercase;
+			font-size: 10px;
+			letter-spacing: 1px;
+			display: block;
+		}
 
-        .spec-value {
-            font-weight: 600;
-            color: var(--text-main);
-        }
+		.spec-value {
+			font-weight: 600;
+			color: var(--text-main);
+		}
 
-        /* DESCRIPTION */
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--accent-gold);
-            position: relative;
-        }
+		/* DESCRIPTION */
+		.section-title {
+			font-family: var(--font-serif);
+			font-size: 28px;
+			text-align: center;
+			margin-bottom: 30px;
+			color: var(--accent-gold);
+			position: relative;
+		}
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 1px;
-            background: var(--accent-gold);
-            margin: 15px auto;
-        }
+		.section-title::after {
+			content: "";
+			display: block;
+			width: 50px;
+			height: 1px;
+			background: var(--accent-gold);
+			margin: 15px auto;
+		}
 
-        .description-content {
-            padding: 60px 40px;
-            border-bottom: 1px solid var(--border-color);
-        }
+		.description-content {
+			padding: 60px 40px;
+			border-bottom: 1px solid var(--border-color);
+		}
 
-        .description-text {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 16px;
-            color: var(--text-dim);
-            line-height: 1.8;
-        }
+		.description-text {
+			max-width: 800px;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 16px;
+			color: var(--text-dim);
+			line-height: 1.8;
+		}
 
-        /* INFO TABS */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-bottom: 1px solid var(--border-color);
-        }
+		/* INFO TABS */
+		.info-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			border-bottom: 1px solid var(--border-color);
+		}
 
-        .info-card {
-            padding: 40px;
-            border-right: 1px solid var(--border-color);
-        }
+		.info-card {
+			padding: 40px;
+			border-right: 1px solid var(--border-color);
+		}
 
-        .info-card:last-child {
-            border-right: none;
-        }
+		.info-card:last-child {
+			border-right: none;
+		}
 
-        .info-card h3 {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--accent-gold);
-        }
+		.info-card h3 {
+			font-family: var(--font-serif);
+			font-size: 20px;
+			margin-bottom: 15px;
+			color: var(--accent-gold);
+		}
 
-        .info-card p,
-        .info-card li {
-            font-size: 14px;
-            color: var(--text-dim);
-            margin-bottom: 10px;
-        }
+		.info-card p,
+		.info-card li {
+			font-size: 14px;
+			color: var(--text-dim);
+			margin-bottom: 10px;
+		}
 
-        /* FOOTER */
-        .footer {
-            padding: 40px;
-            text-align: center;
-            background-color: #050505;
-        }
+		/* FOOTER */
+		.footer {
+			padding: 40px;
+			text-align: center;
+			background-color: color-mix(in srgb, #000000 70%, var(--c-background));
+		}
 
-        .footer p {
-            font-size: 12px;
-            color: var(--text-dim);
-            letter-spacing: 1px;
-        }
+		.footer p {
+			font-size: 12px;
+			color: var(--text-dim);
+			letter-spacing: 1px;
+		}
 
-        /* RESPONSIVENESS */
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                padding: 30px 20px;
-            }
+		/* RESPONSIVENESS */
+		@media (max-width: 768px) {
+			.hero {
+				flex-direction: column;
+				padding: 30px 20px;
+			}
 
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
+			.info-grid {
+				grid-template-columns: 1fr;
+			}
 
-            .info-card {
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-            }
+			.info-card {
+				border-right: none;
+				border-bottom: 1px solid var(--border-color);
+			}
 
-            .trust-badges {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
+			.trust-badges {
+				grid-template-columns: 1fr 1fr;
+				gap: 15px;
+			}
 
-            .product-title {
-                font-size: 32px;
-            }
-        }
-    </style>
-</head>
+			.product-title {
+				font-size: 32px;
+			}
+		}
+		</style>
+	</head>
 
-<body>
+	<body>
+		<div class="listing-container">
+			<!-- HEADER -->
+			<header class="header">
+				<img
+					src="assets/aura-nest-beatuy-logo.jpeg"
+					alt="Aura Nest Beauty"
+					class="logo"
+				>
+				<nav>
+					<ul class="nav">
+						<li><a href="#">Store Home</a></li>
+						<li><a href="#">New Arrivals</a></li>
+						<li><a href="#">Ending Soon</a></li>
+						<li><a href="#">Feedback</a></li>
+						<li><a href="#">About Us</a></li>
+					</ul>
+				</nav>
+			</header>
 
-    <div class="listing-container">
-        <!-- HEADER -->
-        <header class="header">
-            <img src="assets/aura-nest-beatuy-logo.jpeg" alt="Aura Nest Beauty" class="logo">
-            <nav>
-                <ul class="nav">
-                    <li><a href="#">Store Home</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Ending Soon</a></li>
-                    <li><a href="#">Feedback</a></li>
-                    <li><a href="#">About Us</a></li>
-                </ul>
-            </nav>
-        </header>
+			<!-- TRUST BADGES -->
+			<div class="trust-badges">
+				<div class="badge-item">✨ 100% Authentic</div>
+				<div class="badge-item">🚚 Fast & Free Shipping</div>
+				<div class="badge-item">↩ 30-Day Returns</div>
+				<div class="badge-item">🏆 Top Rated Plus</div>
+			</div>
 
-        <!-- TRUST BADGES -->
-        <div class="trust-badges">
-            <div class="badge-item">✨ 100% Authentic</div>
-            <div class="badge-item">🚚 Fast & Free Shipping</div>
-            <div class="badge-item">↩ 30-Day Returns</div>
-            <div class="badge-item">🏆 Top Rated Plus</div>
-        </div>
+			<!-- MAIN PRODUCT INFO -->
+			<main class="hero">
+				<div class="product-image-container">
+					<img
+						src="assets/luxe_bottle.png"
+						alt="Aura D'Or Paris"
+						class="product-main-image"
+					>
+				</div>
+				<div class="product-info">
+					<div class="product-brand">Burberry</div>
+					<h1 class="product-title">
+						BURBERRY BRIT FOR HER <br>by Burberry Perfume
+					</h1>
 
-        <!-- MAIN PRODUCT INFO -->
-        <main class="hero">
-            <div class="product-image-container">
-                <img src="assets/luxe_bottle.png" alt="Aura D'Or Paris" class="product-main-image">
-            </div>
-            <div class="product-info">
-                <div class="product-brand">Burberry</div>
-                <h1 class="product-title">BURBERRY BRIT FOR HER <br>by Burberry Perfume</h1>
+					<div class="item-specifics">
+						<div class="spec-item">
+							<span class="spec-label">Fragrance Name</span>
+							<span class="spec-value">Burberry Brit</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Size</span>
+							<span class="spec-value">3.3 fl oz / 100 ml</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Concentration</span>
+							<span class="spec-value">Eau de Parfum</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Condition</span>
+							<span class="spec-value">Brand New / Tester</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Gender</span>
+							<span class="spec-value">Women</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Package Type</span>
+							<span class="spec-value">Retail Boxed</span>
+						</div>
+					</div>
+				</div>
+			</main>
 
-                <div class="item-specifics">
-                    <div class="spec-item">
-                        <span class="spec-label">Fragrance Name</span>
-                        <span class="spec-value">Burberry Brit</span>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Size</span>
-                        <span class="spec-value">3.3 fl oz / 100 ml</span>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Concentration</span>
-                        <span class="spec-value">Eau de Parfum</span>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Condition</span>
-                        <span class="spec-value">Brand New / Tester</span>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Gender</span>
-                        <span class="spec-value">Women</span>
-                    </div>
-                    <div class="spec-item">
-                        <span class="spec-label">Package Type</span>
-                        <span class="spec-value">Retail Boxed</span>
-                    </div>
-                </div>
-            </div>
-        </main>
+			<!-- DESCRIPTION -->
+			<section class="description-content">
+				<h2 class="section-title">The Fragrance Story</h2>
+				<div class="description-text">
+					<p>
+						The Brit girl embodies the playful British spirit of individuality.
+						She's outrageous but always charming and unpredictably sexy. Fresh
+						and playful the fragrance is a classic green-oriental blend of lush
+						fruits sweet nutty essences and soothing amber vanilla and Tonka
+						bean.
+					</p>
+				</div>
+			</section>
 
-        <!-- DESCRIPTION -->
-        <section class="description-content">
-            <h2 class="section-title">The Fragrance Story</h2>
-            <div class="description-text">
-                <p>The Brit girl embodies the playful British spirit of individuality. She's outrageous but always
-                    charming and unpredictably sexy. Fresh and playful the fragrance is a classic green-oriental blend
-                    of lush fruits sweet nutty essences and soothing amber vanilla and Tonka bean.</p>
-            </div>
-        </section>
+			<!-- ADDITIONAL INFO -->
+			<div class="info-grid">
+				<div class="info-card">
+					<h3>What is a Tester?</h3>
+					<p>
+						Testers are the same original fragrances that you find in full size
+						perfume bottles. Fragrance companies manufacture testers to promote
+						their products.
+					</p>
+					<p>
+						They may come in variety of packing - some come with simple white,
+						brown box or unboxed with or without a cap. They are 100% authentic,
+						fresh and completely full.
+					</p>
+				</div>
+				<div class="info-card">
+					<h3>Shipping Policy</h3>
+					<ul>
+						<li>We ship all orders the same day or next business day.</li>
+						<li>
+							Once an order is shipped, we will email you a tracking number.
+						</li>
+						<li>
+							Secure packaging to ensure your bottle arrives in perfect
+							condition.
+						</li>
+						<li>
+							We ship to all USA states including Puerto Rico, Hawaii, Alaska.
+						</li>
+					</ul>
+				</div>
+			</div>
 
-        <!-- ADDITIONAL INFO -->
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>What is a Tester?</h3>
-                <p>Testers are the same original fragrances that you find in full size perfume bottles. Fragrance
-                    companies manufacture testers to promote their products.</p>
-                <p>They may come in variety of packing - some come with simple white, brown box or unboxed with or
-                    without a cap. They are 100% authentic, fresh and completely full.</p>
-            </div>
-            <div class="info-card">
-                <h3>Shipping Policy</h3>
-                <ul>
-                    <li>We ship all orders the same day or next business day.</li>
-                    <li>Once an order is shipped, we will email you a tracking number.</li>
-                    <li>Secure packaging to ensure your bottle arrives in perfect condition.</li>
-                    <li>We ship to all USA states including Puerto Rico, Hawaii, Alaska.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <p>&copy; 2026 Aura Nest Beauty. All Rights Reserved. | <a href="#"
-                    style="color: var(--accent-gold); text-decoration: none;">Contact Us</a></p>
-        </footer>
-    </div>
-
-</body>
-
+			<!-- FOOTER -->
+			<footer class="footer">
+				<span class="footer-line"
+					>&copy; 2026 Aura Nest Beauty. All Rights Reserved. |
+				</span>
+				<a href="#" style="color: var(--accent-gold); text-decoration: none;"
+					>Contact Us</a
+				>
+			</footer>
+		</div>
+	</body>
 </html>
